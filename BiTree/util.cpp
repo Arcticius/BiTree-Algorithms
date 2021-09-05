@@ -51,21 +51,21 @@ bool IsEmpty(SqStack S) {
 	return S.top == -1;
 }
 
-bool Push(SqStack& S, ElemType x) {
+bool Push(SqStack& S, BiTree x) {
 	if (S.top == MAXSIZE - 1)
 		return false;
 	S.data[++S.top] = x;
 	return true;
 }
 
-bool Pop(SqStack& S, ElemType& x) {
+bool Pop(SqStack& S, BiTree& x) {
 	if (IsEmpty(S))
 		return false;
 	x = S.data[S.top--];
 	return true;
 }
 
-bool GetTop(SqStack S, ElemType& x) {
+bool GetTop(SqStack S, BiTree& x) {
 	if (IsEmpty(S))
 		return false;
 	x = S.data[S.top];
@@ -94,4 +94,38 @@ bool DeQueue(SqQueue& Q, ElemType& x) {
 	x = Q.data[Q.front];
 	Q.front = (Q.front + 1) % MAXSIZE;
 	return true;
+}
+
+void InOrderNR(BiTree T) {
+	SqStack S; InitStack(S);
+	BiTree p = T;
+
+	while (p || !IsEmpty(S)) {
+		if (p) {
+			Push(S, p);
+			p = p->lchild;
+		}
+		else {
+			Pop(S, p);
+			printf("%c ", p->data);
+			p = p->rchild;
+		}
+	}
+}
+
+void PreOrderNR(BiTree T) {
+	SqStack S; InitStack(S);
+	BiTree p = T;
+
+	while (p || !IsEmpty(S)) {
+		if (p) {
+			printf("%c ", p->data);
+			Push(S, p);
+			p = p->lchild;
+		}
+		else {
+			Pop(S, p);
+			p = p->rchild;
+		}
+	}
 }

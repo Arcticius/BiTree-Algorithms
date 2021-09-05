@@ -4,12 +4,12 @@
 #include"bitree.h"
 
 typedef struct {
-	ElemType data[MAXSIZE];
+	BiTree data[MAXSIZE];
 	int top;
 }SqStack;
 
 void InitStack(SqStack& S);
 bool IsEmpty(SqStack S);
-bool Push(SqStack& S, ElemType x);
-bool Pop(SqStack& S, ElemType& x);
-bool GetTop(SqStack S, ElemType& x);
+bool Push(SqStack& S, BiTree x);
+bool Pop(SqStack& S, BiTree& x);
+bool GetTop(SqStack S, BiTree& x);

@@ -10,3 +10,7 @@ void CreateBiTree(BiTree* T);
 void PreOrder(BiTree T);
 void InOrder(BiTree T);
 void PostOrder(BiTree T);
+void InOrderNR(BiTree T);
+void PreOrderNR(BiTree T);
+
+void PostOrderNR(BiTree T); //非递归后续遍历

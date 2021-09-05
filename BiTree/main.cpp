@@ -8,9 +8,9 @@ int main()
     BiTree T = NULL;
 
     CreateBiTree(&T);
-    PreOrder(T); printf("\n");
-    InOrder(T); printf("\n");
+
     PostOrder(T); printf("\n");
+    PostOrderNR(T);
 
     return 0;
 }
