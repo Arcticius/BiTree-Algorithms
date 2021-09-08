@@ -80,7 +80,7 @@ bool IsEmpty(SqQueue Q) {
 	return Q.rear == Q.front;
 }
 
-bool EnQueue(SqQueue& Q, ElemType x) {
+bool EnQueue(SqQueue& Q, BiTree x) {
 	if ((Q.rear + 1) % MAXSIZE == Q.front)
 		return false;
 	Q.data[Q.rear] = x;
@@ -88,7 +88,7 @@ bool EnQueue(SqQueue& Q, ElemType x) {
 	return true;
 }
 
-bool DeQueue(SqQueue& Q, ElemType& x) {
+bool DeQueue(SqQueue& Q, BiTree& x) {
 	if (IsEmpty(Q))
 		return false;
 	x = Q.data[Q.front];
@@ -96,36 +96,3 @@ bool DeQueue(SqQueue& Q, ElemType& x) {
 	return true;
 }
 
-void InOrderNR(BiTree T) {
-	SqStack S; InitStack(S);
-	BiTree p = T;
-
-	while (p || !IsEmpty(S)) {
-		if (p) {
-			Push(S, p);
-			p = p->lchild;
-		}
-		else {
-			Pop(S, p);
-			printf("%c ", p->data);
-			p = p->rchild;
-		}
-	}
-}
-
-void PreOrderNR(BiTree T) {
-	SqStack S; InitStack(S);
-	BiTree p = T;
-
-	while (p || !IsEmpty(S)) {
-		if (p) {
-			printf("%c ", p->data);
-			Push(S, p);
-			p = p->lchild;
-		}
-		else {
-			Pop(S, p);
-			p = p->rchild;
-		}
-	}
-}
