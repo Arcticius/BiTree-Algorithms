@@ -1,9 +1,2 @@
 ﻿  main.cpp
-  solutions.cpp
-  util.cpp
-D:\HNU\4\数据结构\树\BiTree\BiTree\util.cpp(9,10): warning C4473: “scanf_s”: 没有为格式字符串传递足够的参数
-D:\HNU\4\数据结构\树\BiTree\BiTree\util.cpp(9,10): message : 占位符和其参数预计 2 可变参数，但提供的却是 1 参数
-D:\HNU\4\数据结构\树\BiTree\BiTree\util.cpp(9,10): message : 缺失的可变参数 2 为格式字符串“%c”所需
-D:\HNU\4\数据结构\树\BiTree\BiTree\util.cpp(9,10): message : 此参数用作缓冲区大小
-  正在生成代码...
   BiTree.vcxproj -> D:\HNU\4\数据结构\树\BiTree\Debug\BiTree.exe

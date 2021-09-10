@@ -173,3 +173,49 @@ bool IsComplete(BiTree T) { //是否是完全二叉树
 
 	return true;
 }
+
+int DoubleNodesCount(BiTree T) { //双分支结点数统计，递归法
+	if (T == NULL)//递归出口
+		return 0;
+	else if (T->lchild != NULL && T->rchild != NULL) //双分支
+		return DoubleNodesCount(T->lchild) + DoubleNodesCount(T->rchild) + 1;
+	else //单分支
+		return DoubleNodesCount(T->lchild) + DoubleNodesCount(T->rchild);
+}
+
+int count = 0;
+int DoubleNodesCount2(BiTree T) { //双分支结点数统计，全局变量法
+	if (T != NULL) {
+		if (T->lchild != NULL && T->rchild != NULL)
+			count++;
+		DoubleNodesCount2(T->lchild);
+		DoubleNodesCount2(T->rchild);
+
+		return count;
+	}
+
+	return 0;
+}
+
+void SwapSubTree(BiTree& T) { //交换左右子树
+	if (T != NULL) {
+		BiTree temp;
+		SwapSubTree(T->lchild); //交换左右孩子的子树
+		SwapSubTree(T->rchild);
+
+		temp = T->lchild; //交换本结点
+		T->lchild = T->rchild;
+		T->rchild = temp;
+	}
+}
+
+int i = 1; //设置全局变量，记录当前结点序号
+ElemType PreOrderK(BiTree T, int k) { //先序遍历第k的结点的值
+	if (T == NULL) //结点为空，返回特殊字符
+		return '#';
+	if (i == k) //当前为第k个结点
+		return T->data;
+
+	i++; //当前非第k个结点，在左右子树中继续寻找
+	return (PreOrderK(T->lchild, k) != '#') ? PreOrderK(T->lchild, k) : PreOrderK(T->rchild, k);
+}
